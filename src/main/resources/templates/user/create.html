@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="common/header :: head">
+    <title>Hello Spring Security</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="/css/main.css" th:href="@{/css/main.css}" />
+</head>
+<body>
+    <div class="containers">
+
+        <form action="#" th:action="@{/create}" th:object="${users}"  method="post">
+            <p>Email</p>
+            <input type="email" th:field="*{email}"/>
+            <p>Családnév</p>
+            <input type="text" th:field="*{last_name}"/>
+            <p>Keresztnév</p>
+            <input type="text" th:field="*{first_name}"/>
+            <p>Jelszó</p>
+            <input type="password" th:field="*{password}"/>
+            <p>Jogosultság</p>
+            <select class="form-control" id="permission" th:field="*{permission}">
+                <option th:value="ADMIN">Admin</option>
+                <option th:value="SALES">Sales</option>
+                <option th:value="SALES_ADMIN">Sales Admin</option>
+            </select>
+            <button type="submit">Kész</button>
+        </form>
+
+        <ul>
+            <li th:each="err : ${#fields.errors('all')}" th:text="${err}" />
+        </ul>
+    </div>
+</body>
+</html>

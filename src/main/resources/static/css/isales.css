@@ -1,0 +1,57 @@
+body {
+    background-color: lightgray;
+}
+
+#login {
+    margin-top: 40%;
+}
+
+#login > * {
+    margin-top: 10px;
+}
+
+/************************************/
+
+.shadow {
+    -webkit-box-shadow: 10px 10px 60px -15px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 60px -15px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 60px -15px rgba(0,0,0,0.75);
+}
+
+.float-right {
+    float: right;
+}
+
+/************************************/
+
+#top-bar {
+    background-color: black;
+    color: white;
+    height: 30px;
+    line-height: 30px;
+}
+
+/************************************/
+
+#left-bar {
+    width: 200px;
+    padding: 20px;
+    background: black;
+}
+
+#left-bar > a {
+    display: block;
+    color: white;
+}
+
+/************************************/
+
+.task {
+    background-color: white;
+    border-radius: 5px;
+    padding: 5px 20px;
+}
+
+.task + .task {
+    margin-top: 10px;
+}
