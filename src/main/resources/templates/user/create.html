@@ -1,29 +1,33 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head th:replace="common/header :: head">
-    <title>Hello Spring Security</title>
-    <meta charset="utf-8" />
-    <link rel="stylesheet" href="/css/main.css" th:href="@{/css/main.css}" />
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>iOne - By Tóth Máté</title>
+    <link rel="stylesheet" type="text/css" href="../../static/css/bootstrap-theme.min.css" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="../../static/css/bootstrap.min.css" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="../../static/css/isales.css" media="screen"/>
+    <script type="text/javascript" src="../../static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../../static/js/bootstrap.min.js"></script>
 </head>
 <body>
     <div class="containers">
-
-        <form action="#" th:action="@{/create}" th:object="${users}"  method="post">
+        <form id="user-form-create" class="col-md-6 form-group" action="#" th:action="@{/user/create}" th:object="${users}"  method="post">
             <p>Email</p>
-            <input type="email" th:field="*{email}"/>
+            <input class="form-control" type="email" th:field="*{email}"/>
             <p>Családnév</p>
-            <input type="text" th:field="*{last_name}"/>
+            <input class="form-control" type="text" th:field="*{last_name}"/>
             <p>Keresztnév</p>
-            <input type="text" th:field="*{first_name}"/>
+            <input class="form-control" type="text" th:field="*{first_name}"/>
             <p>Jelszó</p>
-            <input type="password" th:field="*{password}"/>
+            <input class="form-control" type="password" th:field="*{password}"/>
             <p>Jogosultság</p>
             <select class="form-control" id="permission" th:field="*{permission}">
                 <option th:value="ADMIN">Admin</option>
                 <option th:value="SALES">Sales</option>
                 <option th:value="SALES_ADMIN">Sales Admin</option>
             </select>
-            <button type="submit">Kész</button>
+            <button class="form-control" type="submit">Kész</button>
         </form>
 
         <ul>

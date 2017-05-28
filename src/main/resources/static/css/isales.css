@@ -22,6 +22,14 @@ body {
     float: right;
 }
 
+.line {
+    content: " ";
+    width: 100%;
+    background-color: white;
+    display: block;
+    height: 1px;
+}
+
 /************************************/
 
 #top-bar {
@@ -34,7 +42,7 @@ body {
 /************************************/
 
 #left-bar {
-    width: 200px;
+    /*width: 250px;*/
     padding: 20px;
     background: black;
 }
@@ -54,4 +62,11 @@ body {
 
 .task + .task {
     margin-top: 10px;
+}
+
+/************************************/
+
+#user-form-create {
+    font-size: large;
+    line-height: 30px;
 }

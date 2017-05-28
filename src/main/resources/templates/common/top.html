@@ -14,13 +14,32 @@
     <div id="top-bar" class="container-fluid" th:fragment="top-bar">
         <p class="col-md-4 col-md-offset-8" th:text="${user.email}">test@test.com</p>
     </div>
-    <div id="left-bar">
-        <a>Task</a>
-        <a>Company</a>
-        <a>Vehicles</a>
-        <a>Perifériák</a>
-        <a>Egységek</a>
-        <a>Sim kártyák</a>
+    <div id="left-bar" class="col-md-2" th:fragment="menu">
+        <a href="/" th:href="@{~/user/task}">Tevékenységek</a>
+        <span class="line"></span>
+        <a th:href="@{~/company}">Cégek</a>
+        <a th:href="@{~/company/create}">Cégek Létrehozása</a>
+        <span class="line"></span>
+        <a th:href="@{~/vehicle}">Járművek</a>
+        <a th:href="@{~/vehicle/create}">Járművek Létrehozása</a>
+        <span class="line"></span>
+        <a th:href="@{~/peripherial}">Perifériák</a>
+        <a th:href="@{~/peripherial/create}">Perifériák Létrehozása</a>
+        <span class="line"></span>
+        <a th:href="@{~/peripherial_group}">Perifériák Csoportok</a>
+        <a th:href="@{~/peripherial_group/create}">Perifériák Csoportok Létrehozása</a>
+        <span class="line"></span>
+        <a th:href="@{~/peripherial_type}">Perifériák Típusok</a>
+        <a th:href="@{~/peripherial_type/create}">Perifériák Típusok Létrehozása</a>
+        <span class="line"></span>
+        <a th:href="@{~/unit}">Egységek</a>
+        <a th:href="@{~/unit/create}">Egységek Létrehozása</a>
+        <span class="line"></span>
+        <a th:href="@{~/sim}">Sim kártyák</a>
+        <a th:href="@{~/sim/create}">Sim kártya Létrehozása</a>
+    </div>
+
+    <div class="col-md-10" th:fragment="content">
     </div>
 </body>
 </html>

@@ -11,12 +11,16 @@
     <script type="text/javascript" src="../../static/js/bootstrap.min.js"></script>
 </head>
 <body>
-<div class="container">
-    <form class="row task shadow">
-        <input type="date" th:field="*{startDate}"/>
-        <input type="date" th:field="*{endDate}"/>
+<div th:replace="common/top :: top-bar"></div>
+<div th:replace="common/top :: menu"></div>
+<!--<div th:insert="common/top :: content">-->
+<div class="col-md-10">
+    <form class="row task shadow"
+          th:action="@{/task/create}" th:object="${task}" method="post">
+        <input type="datetime" th:field="*{startDate}"/>
+        <input type="datetime" th:field="*{endDate}"/>
         <input type="text" th:field="*{title}"/>
-        <input type="text" th:field="*{descripton}"/>
+        <input type="text" th:field="*{description}"/>
         <button type="submit">Kész</button>
     </form>
 </div>

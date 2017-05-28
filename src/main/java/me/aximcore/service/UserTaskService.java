@@ -14,6 +14,8 @@ import java.util.List;
  */
 public interface UserTaskService {
     List<UserTasks> getByEmail(String email);
+    List<UserTasks> getByUser(Users user);
+    List<UserTasks> getByCompany(Company company);
     void create(UserTasks task);
     void setTitle(String title);
     void setDescription(String description);
