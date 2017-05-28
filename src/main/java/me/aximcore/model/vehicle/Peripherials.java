@@ -5,7 +5,7 @@ import javax.persistence.*;
 /**
  * Created by aximc on 2017. 04. 26..
  *
- * Konkrét perifériák.
+ * Konkrét periféria.
  */
 @Entity
 @Table(name = "peripherials")
@@ -22,9 +22,6 @@ public class Peripherials {
     @OneToOne
     @JoinColumn(name = "type")
     private PeripherialsType peripherialsType;
-    @OneToOne
-    @JoinColumn(name = "unit_type")
-    private UnitType unitType;
 
     public int getId() {
         return id;
@@ -64,13 +61,5 @@ public class Peripherials {
 
     public void setPeripherialsType(PeripherialsType peripherialsType) {
         this.peripherialsType = peripherialsType;
-    }
-
-    public UnitType getUnitType() {
-        return unitType;
-    }
-
-    public void setUnitType(UnitType unitType) {
-        this.unitType = unitType;
     }
 }

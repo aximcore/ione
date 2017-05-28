@@ -49,6 +49,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public Users getById(int userId) {
+        return userDao.getById(userId);
+    }
+
+    @Override
     public void createUser(String email, String firstName, String lastName, String password, String permission) {
         Users user = new Users();
         user.setEmail(email);

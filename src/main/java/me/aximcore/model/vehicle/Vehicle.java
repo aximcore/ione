@@ -1,6 +1,7 @@
 package me.aximcore.model.vehicle;
 
 import me.aximcore.model.company.Company;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -26,7 +27,7 @@ public class Vehicle {
     private Config config;
     @ManyToOne
     private Company owner;
-
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private LocalDateTime installation_date;
 
     private boolean active;

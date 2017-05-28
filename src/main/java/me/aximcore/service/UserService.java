@@ -15,6 +15,7 @@ import java.util.List;
 public interface UserService extends UserDetailsService {
     List<Users> getAllUsers();
     Users getUserbyEmail(String email);
+    Users getById(int userId);
     void createUser(String email, String firstName, String lastName, String password, String permission);
     void setFirstName(int userId, String firstName);
     void setLastName(int userId, String lastName);

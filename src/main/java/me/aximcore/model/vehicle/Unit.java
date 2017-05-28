@@ -1,5 +1,7 @@
 package me.aximcore.model.vehicle;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
@@ -27,6 +29,7 @@ public class Unit {
     @ManyToOne
     @JoinColumn(name = "protocol")
     private CommunicationProtocol protocol;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     @Column(columnDefinition="TIMESTAMP")
     private LocalDateTime import_time;
 

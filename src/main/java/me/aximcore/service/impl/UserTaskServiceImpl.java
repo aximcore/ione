@@ -1,11 +1,13 @@
 package me.aximcore.service.impl;
 
+import me.aximcore.dao.UserTasksDao;
 import me.aximcore.model.company.Company;
 import me.aximcore.model.user.UserTaskPiority;
 import me.aximcore.model.user.UserTaskType;
 import me.aximcore.model.user.UserTasks;
 import me.aximcore.model.user.Users;
 import me.aximcore.service.UserTaskService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -16,6 +18,15 @@ import java.util.List;
  */
 @Service
 public class UserTaskServiceImpl implements UserTaskService {
+
+    @Autowired
+    UserTasksDao userTasksDao;
+
+    @Override
+    public List<UserTasks> getAll() {
+        return userTasksDao.getAllTasks();
+    }
+
     @Override
     public List<UserTasks> getByEmail(String email) {
         return null;
@@ -23,7 +34,7 @@ public class UserTaskServiceImpl implements UserTaskService {
 
     @Override
     public List<UserTasks> getByUser(Users user) {
-        return null;
+        return userTasksDao.getByUser(user);
     }
 
     @Override
@@ -33,7 +44,12 @@ public class UserTaskServiceImpl implements UserTaskService {
 
     @Override
     public void create(UserTasks task) {
-        System.out.println(task);
+        userTasksDao.createTask(task);
+    }
+
+    @Override
+    public void remove(int taskId) {
+        userTasksDao.removeTask(taskId);
     }
 
     @Override

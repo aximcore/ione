@@ -13,6 +13,7 @@ import java.util.List;
  */
 public interface UserDao {
     List<Users> getUsers();
+    Users getById(int userId);
     Users getUserByEmail(String email);
     List<String> getUserPermissions();
     void createUser(Users user);

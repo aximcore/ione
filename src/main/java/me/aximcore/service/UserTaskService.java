@@ -13,10 +13,12 @@ import java.util.List;
  * Created by aximcore on 2017.05.23..
  */
 public interface UserTaskService {
+    List<UserTasks> getAll();
     List<UserTasks> getByEmail(String email);
     List<UserTasks> getByUser(Users user);
     List<UserTasks> getByCompany(Company company);
     void create(UserTasks task);
+    void remove(int taskId);
     void setTitle(String title);
     void setDescription(String description);
     void setType(UserTaskType taskType);

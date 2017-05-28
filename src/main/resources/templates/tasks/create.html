@@ -17,11 +17,35 @@
 <div class="col-md-10">
     <form class="row task shadow"
           th:action="@{/task/create}" th:object="${task}" method="post">
-        <input type="datetime" th:field="*{startDate}"/>
-        <input type="datetime" th:field="*{endDate}"/>
-        <input type="text" th:field="*{title}"/>
-        <input type="text" th:field="*{description}"/>
-        <button type="submit">Kész</button>
+        <p>Start Date</p>
+        <input class="form-control" type="datetime" th:field="*{startDate}"/>
+        <p>End Date</p>
+        <input class="form-control" type="datetime" th:field="*{endDate}"/>
+        <p>Title</p>
+        <input class="form-control" type="text" th:field="*{title}"/>
+        <p>Description</p>
+        <input class="form-control" type="text" th:field="*{description}"/>
+        <p>Type</p>
+        <select class="form-control" id="type" th:field="*{type}">
+            <option th:value="OFFICE">OFFICE</option>
+            <option th:value="MEETING">MEETING</option>
+            <option th:value="COMPANY">COMPANY</option>
+        </select>
+        <p>Piority</p>
+        <select class="form-control" id="piority" th:field="*{priority}">
+            <option th:value="NORMAL">Normal</option>
+            <option th:value="IMPORTANT">Important</option>
+        </select>
+        <p>Company:</p>
+        <select class="form-control" th:field="*{company}">
+            <option th:each="i : ${companyAll}"
+                    th:value="${i.id}" th:text="${i.name}"></option>
+        </select>
+
+        <input type="hidden" th:field="*{active}" value="true">
+        <!--<input type="hidden" th:field="*{user}" th:value="${user.id}">-->
+        <input type="hidden" th:value="${user.id}" name="user" />
+        <button class="form-control" type="submit">Kész</button>
     </form>
 </div>
 </body>

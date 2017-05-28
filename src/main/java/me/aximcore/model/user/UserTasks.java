@@ -30,7 +30,7 @@ public class UserTasks {
     private LocalDateTime endDate;
 
     private boolean active;
-    @Basic(fetch = FetchType.LAZY)
+    @Basic(fetch = FetchType.EAGER)
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "company_id")
     private Company company;

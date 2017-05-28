@@ -2,6 +2,7 @@ package me.aximcore.dao.impl;
 
 import me.aximcore.dao.UserTasksDao;
 import me.aximcore.model.user.UserTasks;
+import me.aximcore.model.user.Users;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,14 @@ public class UserTasksDaoImpl implements UserTasksDao {
     public List<UserTasks> getAllTasks() {
         Session session = sessionFactory.getCurrentSession();
         return session.createQuery("from UserTasks").list();
+    }
+
+    @Override
+    public List<UserTasks> getByUser(Users user) {
+        return sessionFactory.getCurrentSession()
+                .createQuery("from UserTasks t where t.user=:u")
+                .setParameter("u", user)
+                .list();
     }
 
     @Override

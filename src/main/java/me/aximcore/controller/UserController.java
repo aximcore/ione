@@ -1,7 +1,10 @@
 package me.aximcore.controller;
 
+import me.aximcore.model.company.Company;
+import me.aximcore.model.user.UserPermission;
 import me.aximcore.model.user.UserTasks;
 import me.aximcore.model.user.Users;
+import me.aximcore.service.CompanyService;
 import me.aximcore.service.UserService;
 import me.aximcore.service.UserTaskService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +33,16 @@ public class UserController {
     private UserService userService;
     @Autowired
     private UserTaskService userTaskService;
+    @Autowired
+    private CompanyService companyService;
+
+    private Users user;
+
+    @ModelAttribute("user")
+    private Users loggedUser(@AuthenticationPrincipal Users user) {
+        this.user = user;
+        return this.user;
+    }
 
     // el kell lőni login előtt egy fgv hogy loginolni tudja
     @RequestMapping(value = "/")
@@ -38,8 +51,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/home")
-    public String logged(@AuthenticationPrincipal Users user, Model model) {
-        model.addAttribute("user", user);
+    public String logged(Model model) {
         return "tasks/view";
     }
 
@@ -52,7 +64,8 @@ public class UserController {
     @PostMapping(value = "/user/create")
     public String createUserSubmit(@ModelAttribute Users users) {
         userService.createUser(users.getEmail(), users.getFirst_name(),
-                users.getLast_name(), users.getPassword(), users.getPermission().name());
+                users.getLast_name(), users.getPassword(),
+                users.getPermission().name());
         return "user/create";
     }
 
@@ -60,30 +73,36 @@ public class UserController {
     /************************************************/
 
     @RequestMapping(value = "/user/task")
-    public String login(@AuthenticationPrincipal Users user, Model model){
-        model.addAttribute("user",user);
+    public String userAllTask(Model model) {
+        model.addAttribute("tasks", userTaskService.getByUser(user));
         return "tasks/view";
     }
 
+    @GetMapping("/task/all")
+    public String taskViewForAdmin(Model model) {
+        model.addAttribute("tasks", userTaskService.getAll());
+        return "tasks/admin/view";
+    }
+
     @GetMapping("/task/create")
-    public String createTaskGet(@AuthenticationPrincipal Users user, Model model) {
-        model.addAttribute("user",user);
+    public String createTaskGet(Model model) {
         model.addAttribute("task", new UserTasks());
+        model.addAttribute("companyAll", companyService.getAll());
         return "tasks/create";
     }
 
     @PostMapping("/task/create")
-    public String createTask(@AuthenticationPrincipal Users user,
-            @ModelAttribute UserTasks task,
+    public String createTask(@ModelAttribute UserTasks task,
                              Model model) {
-        model.addAttribute("user",user);
         model.addAttribute("task", task);
+        model.addAttribute("companyAll", companyService.getAll());
         userTaskService.create(task);
         return "tasks/create";
     }
 
-    @RequestMapping(value = "/user/index")
-    public String userIndexSite(Model model) {
-        return "user/index";
+    @RequestMapping(value="/task/remove/{taskId}", method=RequestMethod.GET)
+    public String removeTask(@PathVariable String taskId) {
+        userTaskService.remove(Integer.parseInt(taskId));
+        return "redirect:/user/task";
     }
 }

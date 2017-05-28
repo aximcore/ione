@@ -39,6 +39,19 @@ public class VehicleDaoImpl implements VehicleDao {
     }
 
     @Override
+    public List<Config> getAllConfig() {
+        return sessionFactory.getCurrentSession()
+                .createQuery("from Config")
+                .list();
+    }
+
+    @Override
+    public Config getConfig(int configId) {
+        return sessionFactory.getCurrentSession()
+                .get(Config.class, configId);
+    }
+
+    @Override
     public void createConfig(Config config) {
         sessionFactory.getCurrentSession().save(config);
     }
@@ -46,6 +59,19 @@ public class VehicleDaoImpl implements VehicleDao {
     @Override
     public void removeConfig(Config config) {
         sessionFactory.getCurrentSession().delete(config);
+    }
+
+    @Override
+    public List<Unit> getAllUnit() {
+        return sessionFactory.getCurrentSession()
+                .createQuery("from Unit")
+                .list();
+    }
+
+    @Override
+    public Unit getUnit(int unitId) {
+        return sessionFactory.getCurrentSession()
+                .get(Unit.class, unitId);
     }
 
     @Override
@@ -59,6 +85,19 @@ public class VehicleDaoImpl implements VehicleDao {
     }
 
     @Override
+    public List<Peripherials> getAllPeripherial() {
+        return sessionFactory.getCurrentSession()
+                .createQuery("from Peripherials")
+                .list();
+    }
+
+    @Override
+    public Peripherials getPeripherial(int peripherialId) {
+        return sessionFactory.getCurrentSession()
+                .get(Peripherials.class, peripherialId);
+    }
+
+    @Override
     public void createPeripherial(Peripherials peripherials) {
         sessionFactory.getCurrentSession().save(peripherials);
     }
@@ -69,6 +108,19 @@ public class VehicleDaoImpl implements VehicleDao {
     }
 
     @Override
+    public List<PeripherialsType> getAllPeripherialsType() {
+        return sessionFactory.getCurrentSession()
+                .createQuery("from PeripherialsType")
+                .list();
+    }
+
+    @Override
+    public PeripherialsType getPeripherialType(int typeId) {
+        return sessionFactory.getCurrentSession()
+                .get(PeripherialsType.class, typeId);
+    }
+
+    @Override
     public void createPeripherialType(PeripherialsType peripherialsType) {
         sessionFactory.getCurrentSession().save(peripherialsType);
     }
@@ -76,6 +128,19 @@ public class VehicleDaoImpl implements VehicleDao {
     @Override
     public void removePeripherialType(PeripherialsType peripherialsType) {
         sessionFactory.getCurrentSession().delete(peripherialsType);
+    }
+
+    @Override
+    public List<UnitType> getAllUnitType() {
+        return sessionFactory.getCurrentSession()
+                .createQuery("from UnitType")
+                .list();
+    }
+
+    @Override
+    public UnitType getUnitType(int unitTypeId) {
+        return sessionFactory.getCurrentSession()
+                .get(UnitType.class, unitTypeId);
     }
 
     @Override
@@ -90,6 +155,19 @@ public class VehicleDaoImpl implements VehicleDao {
     }
 
     @Override
+    public List<PeripherialsGroup> getAllPreipherialsGroup() {
+        return sessionFactory.getCurrentSession()
+                .createQuery("from PeripherialsGroup")
+                .list();
+    }
+
+    @Override
+    public PeripherialsGroup getPeripherialsGroup(int pGroupId) {
+        return sessionFactory.getCurrentSession()
+                .get(PeripherialsGroup.class, pGroupId);
+    }
+
+    @Override
     public void createPeripherialsGroup(PeripherialsGroup peripherialsGroup) {
         sessionFactory.getCurrentSession().save(peripherialsGroup);
     }
@@ -100,6 +178,19 @@ public class VehicleDaoImpl implements VehicleDao {
     }
 
     @Override
+    public List<CommunicationProtocol> getAllProtocol() {
+        return sessionFactory.getCurrentSession()
+                .createQuery("from CommunicationProtocol")
+                .list();
+    }
+
+    @Override
+    public CommunicationProtocol getProtocol(int protoId) {
+        return sessionFactory.getCurrentSession()
+                .get(CommunicationProtocol.class, protoId);
+    }
+
+    @Override
     public void createCommunicationProtocol(CommunicationProtocol communicationProtocol) {
         sessionFactory.getCurrentSession().save(communicationProtocol);
     }
@@ -107,5 +198,30 @@ public class VehicleDaoImpl implements VehicleDao {
     @Override
     public void removeCommunicationProtocol(CommunicationProtocol communicationProtocol) {
         sessionFactory.getCurrentSession().delete(communicationProtocol);
+    }
+
+    @Override
+    public List<SimCard> getAllSimCard() {
+        return sessionFactory.getCurrentSession()
+                .createQuery("from SimCard")
+                .list();
+    }
+
+    @Override
+    public SimCard getSimCard(int SimCardId) {
+        return sessionFactory.getCurrentSession()
+                .get(SimCard.class, SimCardId);
+    }
+
+    @Override
+    public void createSimCard(SimCard simCard) {
+        sessionFactory.getCurrentSession()
+                .save(simCard);
+    }
+
+    @Override
+    public void removeSimCard(SimCard simCard) {
+        sessionFactory.getCurrentSession()
+                .delete(simCard);
     }
 }

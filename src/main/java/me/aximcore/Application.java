@@ -14,8 +14,7 @@ import org.thymeleaf.extras.java8time.dialect.Java8TimeDialect;
  * Created by aximc on 2017. 04. 10..
  */
 
-@SpringBootApplication
-//@SpringBootApplication(exclude = {HibernateJpaAutoConfiguration.class, TemplateEngineConf.class})
+@SpringBootApplication(exclude = {HibernateJpaAutoConfiguration.class})
 @EnableTransactionManagement
 public class Application {
     public static void main(String[] args) {
