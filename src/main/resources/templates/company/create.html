@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head th:replace="common/header :: head">
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>iOne - By Tóth Máté</title>
+    <link rel="stylesheet" type="text/css" href="../../static/css/bootstrap-theme.min.css" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="../../static/css/bootstrap.min.css" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="../../static/css/isales.css" media="screen"/>
+    <script type="text/javascript" src="../../static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../../static/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div th:replace="common/top :: top-bar"></div>
+<div th:replace="common/top :: menu"></div>
+<!--<div th:insert="common/top :: content">-->
+<div class="col-md-10">
+    <form class="row task shadow"
+          th:action="@{/company/create}" th:object="${company}" method="post">
+        <p>Name</p>
+        <input class="form-control" type="text" th:field="*{name}"/>
+        <p>Tax number</p>
+        <input class="form-control" type="text" th:field="*{tax_number}"/>
+        <p>Registration number</p>
+        <input class="form-control" type="text" th:field="*{registration_number}"/>
+        <p>Comment</p>
+        <input class="form-control" type="text" th:field="*{comment}"/>
+        <p>Interface</p>
+        <select class="form-control" id="type" th:field="*{interface_}">
+            <option th:value="NORMAL">NORMAL</option>
+            <option th:value="MINI">MINI</option>
+        </select>
+        <p>Unique price:</p>
+        <input class="form-control" type="number" th:field="*{price}"/>
+        <h3>Additional elements:</h3>
+        <p>Name</p>
+        <input class="form-control" type="text" th:field="*{companyAdditionals[0].name}"/>
+        <p>Price</p>
+        <input class="form-control" type="number" th:field="*{companyAdditionals[0].price}"/>
+        <p>Comment</p>
+        <input class="form-control" type="text" th:field="*{companyAdditionals[0].comment}"/>
+        <h3>Contacts</h3>
+        <p>Name</p>
+        <input class="form-control" type="text" th:field="*{contacts[0].name}"/>
+        <p>Phone number</p>
+        <input class="form-control" type="tel" th:field="*{contacts[0].phoneNumber}"/>
+        <p>Email</p>
+        <input class="form-control" type="email" th:field="*{contacts[0].email}"/>
+        <p>Post</p>
+        <input class="form-control" type="text" th:field="*{contacts[0].post}"/>
+        <!--<input class="form-control" type="hidden" th:field="*{contacts[0].company}" th:value="${company}"/>-->
+        <h3>Headquarters</h3>
+        <p>Address</p>
+        <input class="form-control" type="text" th:field="*{headquarters[0].address}"/>
+        <p>City</p>
+        <input class="form-control" type="text" th:field="*{headquarters[0].city}"/>
+        <p>Zipcode</p>
+        <input class="form-control" type="text" th:field="*{headquarters[0].zipCode}"/>
+        <p>Country ISO</p>
+        <input class="form-control" type="text" th:field="*{headquarters[0].countryISO}"/>
+        <p>Lat</p>
+        <input class="form-control" type="number" th:field="*{headquarters[0].lat}"/>
+        <p>Lon</p>
+        <input class="form-control" type="number" th:field="*{headquarters[0].lon}"/>
+        <p>Seat</p>
+        <input class="form-control" type="checkbox" name="seat" th:checked="*{headquarters[0].seat}" />
+        <p>Visiting place</p>
+        <input class="form-control" type="checkbox" name="visitingPlace" th:checked="*{headquarters[0].visitingPlace}" />
+        <p>Comment</p>
+        <input class="form-control" type="text" th:field="*{headquarters[0].comment}"/>
+        <!--<input class="form-control" type="hidden" th:field="*{headquarters[0].company}" th:value="${company}"/>-->
+
+        <button class="form-control" type="submit">Kész</button>
+    </form>
+</div>
+</body>
+</html>

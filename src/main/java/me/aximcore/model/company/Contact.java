@@ -25,9 +25,9 @@ public class Contact {
     private String email;
 
     private String post;
-    @ManyToOne
+    /*@ManyToOne
     @JoinColumn(name = "company")
-    private Company company;
+    private Company company;*/
 
     public int getId() {
         return id;
@@ -69,11 +69,11 @@ public class Contact {
         this.post = post;
     }
 
-    public Company getCompany() {
+    /*public Company getCompany() {
         return company;
     }
 
     public void setCompany(Company company) {
         this.company = company;
-    }
+    }*/
 }

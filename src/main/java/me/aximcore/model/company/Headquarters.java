@@ -13,9 +13,9 @@ public class Headquarters {
     @Id
     @GeneratedValue
     private int id;
-    @ManyToOne
+    /*@ManyToMany
     @JoinColumn(name = "company")
-    private Company company;
+    private Company company;*/
 
     private String address;
 
@@ -43,13 +43,13 @@ public class Headquarters {
         this.id = id;
     }
 
-    public Company getCompany() {
+    /*public Company getCompany() {
         return company;
     }
 
     public void setCompany(Company company) {
         this.company = company;
-    }
+    }*/
 
     public String getAddress() {
         return address;

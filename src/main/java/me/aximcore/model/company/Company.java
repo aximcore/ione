@@ -31,13 +31,13 @@ public class Company {
                    joinColumns = { @JoinColumn(name = "company_id", referencedColumnName = "id") },
             inverseJoinColumns = { @JoinColumn(name = "additionals_id", referencedColumnName = "id") })
     private List<CompanyAdditionals> companyAdditionals;
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
     @JoinTable(name = "company_vehicle_assign")
     private List<Vehicle> vehicles;
-    @ManyToMany
+    @ManyToMany(cascade=CascadeType.ALL)
     @JoinTable(name = "company_contacts_assign")
     private List<Contact> contacts;
-    @ManyToMany
+    @ManyToMany(cascade=CascadeType.ALL)
     @JoinTable(name = "company_headquarters_assign")
     private List<Headquarters> headquarters;
 
@@ -119,5 +119,13 @@ public class Company {
 
     public void setHeadquarters(List<Headquarters> headquarters) {
         this.headquarters = headquarters;
+    }
+
+    public List<Vehicle> getVehicles() {
+        return vehicles;
+    }
+
+    public void setVehicles(List<Vehicle> vehicles) {
+        this.vehicles = vehicles;
     }
 }

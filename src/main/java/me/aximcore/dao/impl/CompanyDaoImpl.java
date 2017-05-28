@@ -22,7 +22,6 @@ public class CompanyDaoImpl implements CompanyDao {
     @Autowired
     private SessionFactory sessionFactory;
 
-
     @Override
     public List<Company> getAll() {
         Session session = sessionFactory.getCurrentSession();
