@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head th:replace="common/header :: head">
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>iOne - By Tóth Máté</title>
+    <link rel="stylesheet" type="text/css" href="../../static/css/bootstrap-theme.min.css" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="../../static/css/bootstrap.min.css" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="../../static/css/isales.css" media="screen"/>
+    <script type="text/javascript" src="../../static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../../static/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div th:replace="common/top :: top-bar"></div>
+<div th:replace="common/top :: menu"></div>
+<!--<div th:insert="common/top :: content">-->
+<div class="col-md-10">
+    <form class="row task shadow"
+          th:action="@{/task/create}" th:object="${task}" method="post">
+        <p>Start Date</p>
+        <input class="form-control" type="datetime" th:field="*{startDate}"/>
+        <p>End Date</p>
+        <input class="form-control" type="datetime" th:field="*{endDate}"/>
+        <p>Title</p>
+        <input class="form-control" type="text" th:field="*{title}"/>
+        <p>Description</p>
+        <input class="form-control" type="text" th:field="*{description}"/>
+        <p>Type</p>
+        <select class="form-control" id="type" th:field="*{type}">
+            <option th:value="OFFICE">OFFICE</option>
+            <option th:value="MEETING">MEETING</option>
+            <option th:value="COMPANY">COMPANY</option>
+        </select>
+        <p>Piority</p>
+        <select class="form-control" id="piority" th:field="*{priority}">
+            <option th:value="NORMAL">Normal</option>
+            <option th:value="IMPORTANT">Important</option>
+        </select>
+        <p>Company:</p>
+        <select class="form-control" th:field="*{company}">
+            <option th:each="i : ${companyAll}"
+                    th:value="${i.id}" th:text="${i.name}"></option>
+        </select>
+
+        <input type="hidden" th:field="*{active}" value="true">
+        <!--<input type="hidden" th:field="*{user}" th:value="${user.id}">-->
+        <input type="hidden" th:value="${user.id}" name="user" />
+        <button class="form-control" type="submit">Kész</button>
+    </form>
+</div>
+</body>
+</html>
