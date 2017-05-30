@@ -1,6 +1,9 @@
 package me.aximcore.model.vehicle;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 /**
  * Created by aximc on 2017. 04. 26..
@@ -13,9 +16,9 @@ public class Peripherials {
     @Id
     @GeneratedValue
     private int id;
-
+    @NotEmpty
     private String name;
-
+    @NotNull
     private long serialnumber;
 
     private String Comment;

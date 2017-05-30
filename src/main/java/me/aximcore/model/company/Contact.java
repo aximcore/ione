@@ -1,6 +1,7 @@
 package me.aximcore.model.company;
 
 import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -18,12 +19,12 @@ public class Contact {
     private int id;
     @NotNull
     private String name;
-
+    @NotEmpty
     private String phoneNumber;
     @NotNull
     @Email
     private String email;
-
+    @NotEmpty
     private String post;
     /*@ManyToOne
     @JoinColumn(name = "company")

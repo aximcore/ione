@@ -11,6 +11,94 @@
     <script type="text/javascript" src="../../static/js/bootstrap.min.js"></script>
 </head>
 <body>
+
+<script>
+    $(document).ready(function() {
+        var companyAdditionalWrapper = $(".company_additional_wrapper"); //Fields wrapper
+        var companyAdditional = 0;
+
+        $(".add_company_additional_button").click(function(e){ //on add input button click
+            e.preventDefault();
+            $(companyAdditionalWrapper).append(
+                '<h4>'+ companyAdditional +'</h4>' +
+                '<p>Name</p>' +
+                '<input class="form-control" type="text" th:field="*{companyAdditionals[' + companyAdditional + '].name}"/>' +
+                '<p>Price</p>' +
+                '<input class="form-control" type="number" th:field="*{companyAdditionals[' + companyAdditional + '].price}"/>' +
+                '<p>Comment</p>' +
+                '<input class="form-control" type="text" th:field="*{companyAdditionals[' + companyAdditional + '].comment}"/>' +
+                //'<a href="#" class="remove_field" style="text-align: center">Remove</a>' +
+                '<!--<input class="form-control" type="hidden" th:field="*{contacts[0].company}" th:value="${company}"/>-->'
+            ); //add input box
+            companyAdditional++;
+        });
+
+        $(companyAdditionalWrapper).on("click",".remove_field", function(e){
+            e.preventDefault(); $(this).parent('div').remove(); companyAdditional--;
+        })
+
+        var contactsWrapper = $(".contacts_wrapper"); //Fields wrapper
+        var contacts = 0;
+
+        $(".add_contacts_button").click(function(e){ //on add input button click
+            e.preventDefault();
+            $(contactsWrapper).append(
+                '<h4>'+ contacts +'</h4>' +
+                '<p>Name</p>' +
+                '<input class="form-control" type="text" th:field="*{contacts[' + contacts + '].name}"/>' +
+                '<p>Phone number</p>' +
+                '<input class="form-control" type="tel" th:field="*{contacts[' + contacts + '].phoneNumber}"/>' +
+                '<p>Email</p>' +
+                '<input class="form-control" type="email" th:field="*{contacts[' + contacts + '].email}"/>' +
+                '<p>Post</p>' +
+                '<input class="form-control" type="text" th:field="*{contacts[' + contacts + '].post}"/>' +
+                //'<a href="#" class="remove_field" style="text-align: center">Remove</a>' +
+                '<!--<input class="form-control" type="hidden" th:field="*{contacts[0].company}" th:value="${company}"/>-->'
+            ); //add input box
+            contacts++;
+        });
+
+        $(contactsWrapper).on("click",".remove_field", function(e){ //user click on remove text
+            e.preventDefault(); $(this).parent('div').remove(); contacts--;
+        })
+
+        var headquarWrapper = $(".company_headquar_wrapper"); //Fields wrapper
+        var headquar = 0;
+
+        $(".add_headquar_button").click(function(e){ //on add input button click
+            e.preventDefault();
+            $(headquarWrapper).append(
+                '<h4>'+ headquar +'</h4>' +
+                '<p>Address</p>' +
+                '<input class="form-control" type="text" th:field="*{headquarters[' + headquar + '].address}"/>' +
+                '<p>City</p>' +
+                '<input class="form-control" type="text" th:field="*{headquarters[' + headquar + '].city}"/>' +
+                '<p>Zipcode</p>' +
+                '<input class="form-control" type="text" th:field="*{headquarters[' + headquar + '].zipCode}"/>' +
+                '<p>Country ISO</p>' +
+                '<input class="form-control" type="text" th:field="*{headquarters[' + headquar + '].countryISO}"/>' +
+                '<p>Lat</p>' +
+                '<input class="form-control" type="text" th:field="*{headquarters[' + headquar + '].lat}"/>' +
+                '<p>Lon</p>' +
+                '<input class="form-control" type="text" th:field="*{headquarters[' + headquar + '].lon}"/>' +
+                '<p>Seat</p>' +
+                '<input class="form-control" type="checkbox" name="seat" th:checked="*{headquarters[' + headquar + '].seat}" />' +
+                '<p>Visiting place</p>' +
+                '<input class="form-control" type="checkbox" name="visitingPlace" th:checked="*{headquarters[' + headquar + '].visitingPlace}" />' +
+                '<p>Comment</p>' +
+                '<input class="form-control" type="text" th:field="*{headquarters[' + headquar + '].comment}"/>' +
+                //'<a href="#" class="remove_field" style="text-align: center">Remove</a>' +
+                '<!--<input class="form-control" type="hidden" th:field="*{headquarters[0].company}" th:value="${company}"/>-->'
+            ); //add input box
+            companyAdditional++;
+        });
+
+        $(companyAdditionalWrapper).on("click",".remove_field", function(e){ //user click on remove text
+            e.preventDefault(); $(this).parent('div').remove(); companyAdditional--;
+        })
+    });
+</script>
+
 <div th:replace="common/top :: top-bar"></div>
 <div th:replace="common/top :: menu"></div>
 <!--<div th:insert="common/top :: content">-->
@@ -33,43 +121,23 @@
         <p>Unique price:</p>
         <input class="form-control" type="number" th:field="*{price}"/>
         <h3>Additional elements:</h3>
-        <p>Name</p>
-        <input class="form-control" type="text" th:field="*{companyAdditionals[0].name}"/>
-        <p>Price</p>
-        <input class="form-control" type="number" th:field="*{companyAdditionals[0].price}"/>
-        <p>Comment</p>
-        <input class="form-control" type="text" th:field="*{companyAdditionals[0].comment}"/>
+        <div class="company_additional_wrapper">
+        <button type="button" class="add_company_additional_button">
+            <span class="glyphicon glyphicon-plus"></span>
+        </button>
+        </div>
         <h3>Contacts</h3>
-        <p>Name</p>
-        <input class="form-control" type="text" th:field="*{contacts[0].name}"/>
-        <p>Phone number</p>
-        <input class="form-control" type="tel" th:field="*{contacts[0].phoneNumber}"/>
-        <p>Email</p>
-        <input class="form-control" type="email" th:field="*{contacts[0].email}"/>
-        <p>Post</p>
-        <input class="form-control" type="text" th:field="*{contacts[0].post}"/>
-        <!--<input class="form-control" type="hidden" th:field="*{contacts[0].company}" th:value="${company}"/>-->
+        <div class="contacts_wrapper">
+            <button type="button" class="add_contacts_button">
+                <span class="glyphicon glyphicon-plus"></span>
+            </button>
+        </div>
         <h3>Headquarters</h3>
-        <p>Address</p>
-        <input class="form-control" type="text" th:field="*{headquarters[0].address}"/>
-        <p>City</p>
-        <input class="form-control" type="text" th:field="*{headquarters[0].city}"/>
-        <p>Zipcode</p>
-        <input class="form-control" type="text" th:field="*{headquarters[0].zipCode}"/>
-        <p>Country ISO</p>
-        <input class="form-control" type="text" th:field="*{headquarters[0].countryISO}"/>
-        <p>Lat</p>
-        <input class="form-control" type="number" th:field="*{headquarters[0].lat}"/>
-        <p>Lon</p>
-        <input class="form-control" type="number" th:field="*{headquarters[0].lon}"/>
-        <p>Seat</p>
-        <input class="form-control" type="checkbox" name="seat" th:checked="*{headquarters[0].seat}" />
-        <p>Visiting place</p>
-        <input class="form-control" type="checkbox" name="visitingPlace" th:checked="*{headquarters[0].visitingPlace}" />
-        <p>Comment</p>
-        <input class="form-control" type="text" th:field="*{headquarters[0].comment}"/>
-        <!--<input class="form-control" type="hidden" th:field="*{headquarters[0].company}" th:value="${company}"/>-->
-
+        <div class="company_headquar_wrapper">
+            <button type="button" class="add_headquar_button">
+                <span class="glyphicon glyphicon-plus"></span>
+            </button>
+        </div>
         <button class="form-control" type="submit">Kész</button>
     </form>
 </div>

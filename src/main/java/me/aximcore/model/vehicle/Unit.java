@@ -1,8 +1,10 @@
 package me.aximcore.model.vehicle;
 
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
@@ -20,11 +22,11 @@ public class Unit {
     @ManyToOne
     @JoinColumn(name = "type")
     private UnitType unitType;
-
+    @NotNull
     private long imei;
-
+    @NotNull
     private long unit_id;
-
+    @NotNull
     private long serialnumber;
     @ManyToOne
     @JoinColumn(name = "protocol")

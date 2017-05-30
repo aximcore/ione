@@ -1,5 +1,7 @@
 package me.aximcore.model.company;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.persistence.*;
 
 /**
@@ -16,13 +18,13 @@ public class Headquarters {
     /*@ManyToMany
     @JoinColumn(name = "company")
     private Company company;*/
-
+    @NotEmpty
     private String address;
-
+    @NotEmpty
     private String city;
-
+    @NotEmpty
     private String zipCode;
-
+    @NotEmpty
     private String countryISO;
 
     private double lat;

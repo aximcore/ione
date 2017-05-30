@@ -1,5 +1,7 @@
 package me.aximcore.model.vehicle;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.persistence.*;
 
 /**
@@ -13,17 +15,17 @@ public class SimCard {
     private int id;
 
     private boolean roaming;
-
+    @NotEmpty
     private String provider;
-
+    @NotEmpty
     private String apn;
-
+    @NotEmpty
     private String phone_number;
-
+    @NotEmpty
     private String data_call;
-
+    @NotEmpty
     private String pin;
-
+    @NotEmpty
     private String pin2;
 
     private boolean company_card;

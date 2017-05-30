@@ -1,6 +1,7 @@
 package me.aximcore.model.vehicle;
 
 import me.aximcore.model.company.Company;
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -18,11 +19,10 @@ public class Vehicle {
     @Id
     @GeneratedValue
     private int id;
-
+    @NotEmpty
     private String license;
-
+    @NotEmpty
     private String vehicleType;
-
     @OneToOne
     private Config config;
     @ManyToOne

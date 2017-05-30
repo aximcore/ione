@@ -1,5 +1,7 @@
 package me.aximcore.model.vehicle;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -14,6 +16,7 @@ public class Config {
     @Id
     @GeneratedValue
     private int id;
+    @NotEmpty
     private String name;
     private String description;
     private int price;

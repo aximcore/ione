@@ -2,15 +2,12 @@ package me.aximcore.controller;
 
 import me.aximcore.model.company.Company;
 import me.aximcore.model.user.Users;
-import me.aximcore.model.vehicle.Unit;
 import me.aximcore.service.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Created by aximcore on 2017.05.28..
@@ -45,5 +42,11 @@ public class CompanyController {
         model.addAttribute("user", user);
         model.addAttribute("companyAll", companyService.getAll());
         return "company/view";
+    }
+
+    @RequestMapping(value="/company/remove/{compId}", method= RequestMethod.GET)
+    public String removeTask(@PathVariable String compId) {
+        companyService.remove(Integer.parseInt(compId));
+        return "redirect:/company/view";
     }
 }

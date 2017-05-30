@@ -1,5 +1,7 @@
 package me.aximcore.model.vehicle;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.persistence.*;
 
 /**
@@ -14,7 +16,7 @@ public class PeripherialsType {
     @Id
     @GeneratedValue
     private int id;
-
+    @NotEmpty
     private String name;
     @ManyToOne
     @JoinColumn(name = "peripherials_group")

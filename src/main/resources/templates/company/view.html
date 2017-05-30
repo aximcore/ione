@@ -27,8 +27,8 @@
             <div class="col-md-2"><span th:text="${#lists.size(company.vehicles)}"></span> db</div>
         </div>
         <div class="row">
-            <div class="col-md-2 col-md-offset-9">Szerkesztés <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></div>
-            <div class="col-md-1">Törlés <span class="glyphicon glyphicon-trash" aria-hidden="true"></span></div>
+            <!--<div class="col-md-2 col-md-offset-9">Szerkesztés <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></div>-->
+            <a class="col-md-1" th:href="@{~/company/remove/{compId}(compId=${company.getId()})}">Törlés <span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
         </div>
     </div>
 </div>

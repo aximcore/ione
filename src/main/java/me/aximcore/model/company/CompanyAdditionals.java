@@ -1,6 +1,9 @@
 package me.aximcore.model.company;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 /**
  * Created by aximcore on 2017.05.07..
@@ -13,9 +16,9 @@ public class CompanyAdditionals {
     @Id
     @GeneratedValue
     private int id;
-
+    @NotEmpty
     private String name;
-
+    @NotNull
     private int price;
 
     private String comment;

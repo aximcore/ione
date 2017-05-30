@@ -1,8 +1,10 @@
 package me.aximcore.model.company;
 
 import me.aximcore.model.vehicle.Vehicle;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 /**
@@ -14,12 +16,13 @@ public class Company {
     @Id
     @GeneratedValue
     private int id;
-
+    @NotEmpty
     private String name;
-
+    @NotEmpty
     private String tax_number;
-
+    @NotEmpty
     private String registration_number;
+    @NotNull
     @Enumerated(EnumType.STRING)
     private CompanyInterface interface_;
 

@@ -1,5 +1,7 @@
 package me.aximcore.model.vehicle;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.persistence.*;
 
 /**
@@ -15,7 +17,7 @@ public class UnitType {
     @Id
     @GeneratedValue
     private int id;
-
+    @NotEmpty
     private String name;
 
     private String description;

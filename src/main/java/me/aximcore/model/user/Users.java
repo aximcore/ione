@@ -1,5 +1,6 @@
 package me.aximcore.model.user;
 
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -17,9 +18,12 @@ public class Users implements UserDetails {
     @Id
     @GeneratedValue
     private int id;
+    @NotEmpty
     private String email;
+    @NotEmpty
     private String first_name;
     private String last_name;
+    @NotEmpty
     private String password;
     @Enumerated(EnumType.STRING)
     private UserPermission permission;

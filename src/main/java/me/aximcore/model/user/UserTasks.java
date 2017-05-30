@@ -1,6 +1,7 @@
 package me.aximcore.model.user;
 
 import me.aximcore.model.company.Company;
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -15,7 +16,7 @@ public class UserTasks {
     @Id
     @GeneratedValue
     private int id;
-
+    @NotEmpty
     private String title;
 
     private String description;
@@ -23,7 +24,6 @@ public class UserTasks {
     private UserTaskType type;
     @Enumerated(EnumType.STRING)
     private UserTaskPiority priority;
-
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private LocalDateTime startDate;
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
