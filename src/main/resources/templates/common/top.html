@@ -11,13 +11,14 @@
     <script type="text/javascript" src="../../static/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <div id="top-bar" class="container-fluid" th:fragment="top-bar">
-        <p class="col-md-4 col-md-offset-8" th:text="${user.email}">test@test.com</p>
+    <div id="top-bar" class="container-fluid shadow-bottom" th:fragment="top-bar">
+        <div class="col-md-4 col-md-offset-8"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> <span th:text="${user.email}">test@test.com</span></div>
     </div>
-    <div id="left-bar" class="col-md-2" th:fragment="menu">
+    <div id="left-bar" class="col-md-2 shadow" th:fragment="menu">
+        <div><span class="glyphicon glyphicon-list-alt glyp" aria-hidden="true"></span></div>
         <a href="/" th:href="@{~/user/task}">Tevékenységek</a>
         <a href="/" th:href="@{~/task/create}">Tevékenységek Felvétele</a>
-        <span class="line"></span>
+        <div><span class="glyphicon glyphicon-briefcase glyp" aria-hidden="true"></span></div>
         <a th:href="@{~/company}">Cégek</a>
         <a th:href="@{~/company/create}">Cégek Létrehozása</a>
         <span class="line"></span>

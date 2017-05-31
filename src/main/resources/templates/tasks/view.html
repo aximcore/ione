@@ -14,23 +14,23 @@
 <div th:replace="common/top :: top-bar"></div>
 <div th:replace="common/top :: menu"></div>
 <div class="col-md-10">
-    <p th:text="${#lists.size(tasks)}"></p>
+    <p style="text-align: right; margin-top:10px"><span th:text="${#lists.size(tasks)}"></span> darab tevékenység.</p>
     <div class="row task shadow" th:each="task : ${tasks}">
         <div class="row">
-            <div class="col-md-2 date" th:text="${task.startDate}"></div>
-            <div class="col-md-2 date" th:text="${task.endDate}"></div>
-            <div class="col-md-4 title" th:text="${task.title}"></div>
-            <div class="col-md-1 priority" th:text="${task.priority}"></div>
-            <div class="col-md-3 company" th:text="${task.company.getName()}"></div>
-        </div>
-        <div class="row">
-            <span class="col-md-1 glyphicon glyphicon-alert" aria-hidden="true"></span>
-            <div class="col-md-3 name" th:text="${task.user.getName()}"></div>
-            <div class="col-md-8 description" th:text="${task.description}"></div>
-        </div>
-        <div class="row">
-            <div class="col-md-2 col-md-offset-9">Szerkesztés <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></div>
+            <div class="col-md-2 date" th:text="${task.startDate}">2017-02-15 12:00</div>
+            <div class="col-md-2 date" th:text="${task.endDate}">2017-02-15 12:00</div>
+            <div class="col-md-4 title" th:text="${task.title}">Valami melo</div>
+            <div class="col-md-1 priority" th:text="${task.priority}">Normal</div>
+            <div class="col-md-2 company" th:text="${task.company.getName()}">Asd1 Kft.</div>
             <a class="col-md-1" th:href="@{~/task/remove/{taskId}(taskId=${task.getId()})}">Törlés <span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+        </div>
+        <div class="row">
+            <!--<span class="col-md-1 glyphicon glyphicon-alert" aria-hidden="true"></span>-->
+            <div class="col-md-3 name" th:text="${task.user.getName()}">Tesztelő János</div>
+            <div class="col-md-8 description" th:text="${task.description}">Hosszú leírás</div>
+        </div>
+        <div class="row">
+            <!--<div class="col-md-2 col-md-offset-9">Szerkesztés <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></div>-->
         </div>
     </div>
 </div>
